@@ -16,31 +16,98 @@
 using namespace std;
 
 //------------------------------------------------------------------------------
-// iterative binary search for int array
+// Iterative binary search in int array[]
+//      - size parameter is the number of ints in passed array[]
+//      - searchValue parameter is the value to find in array[]
+//      - array[] must be sorted in ascending order!
 // 
-// size parameter is the number of ints in passed array[]
+// Loops to compare searchValue with successive array midpoints.
+// 
+// The low and high array indices move towards each other.
+// 
+// Each loop iteration either:
+//      increases low index, or
+//      decreases high index
+// 
+// When low moves past high, the search stops and reports item not found.
+// 
+// Returns:
+//      - the array index where passed searchValue was found, or
+//      - -1 if searchValue was not found
+//
+// * Example: int array[] = { 0, 1, 2, 3, 4 }, searchValue = 1
+// 
+//      1) set low index to 0, high index to 4
+//      2) compare searchValue 1 with midpoint value 2 at array[2]
+//      3) 1 < 2 so next time only search elements before the 2
+//              same low index is 0
+//              new high index is 1
+//              new mid index is (0 + 1) / 2 = 0
+//      4) compare searchValue 1 with new midpoint value 0 at array[0]
+//      5) 1 > 0 so next time only search elements after the 0
+//              new low index is 1
+//              new high index is 1
+//              new mid index is (1 + 1) / 2 = 1
+//      6) compare searchValue 1 with new midpoint value at 1 array[1]
+//      7) 1 == 1 so searchValue is found at index mid = 1
+// 
+// * Another Example: int array[] = { 0, 1, 2, 3, 4 }, searchValue = 3
+// 
+//      1) set low index to 0, high index to 4
+//      2) compare searchValue 3 with midpoint value 2 at array[2]
+//      3) 3 is not < 2 so next time only search elements after the 2
+//              new low index is 3
+//              same high index is 4
+//              new mid index is (3 + 4) / 2 = 3
+//      4) compare searchValue 3 with new midpoint value 3 at array[3]
+//      5) 3 == 3 so searchValue is found at index mid = 3
 //------------------------------------------------------------------------------
 int binarySearch(int array[], int size, int searchValue) {
+
+    cout << "searchValue = " << searchValue << "\n\n";
+
+    // left side search begins at array index low
     int low = 0;
+    // right side search ends at array index high
     int high = size - 1;
 
+    // array index in between low and high
     int mid;
 
+    // search fails when the low index goes past the high index
     while (low <= high) {
+        
         mid = (low + high) / 2;
+   
+        cout << "low index = " << low 
+            << ", high index = " << high 
+            << ", mid index = " << mid << '\n';
 
-        int midValue = array[mid];
+        cout << "array[mid] = " << array[mid] << '\n';
 
-        if (searchValue == midValue) {
+        // #TODO operator overload functions: ==, > 
+        if (searchValue == array[mid]) {
             return mid;     // found! at index mid
         }
-        else if (searchValue > midValue) {
+        // searchValue is bigger than current mid index 
+        else if (searchValue > array[mid]) {
+            // next search will start right after mid
             low = mid + 1;
+            cout << "array[mid] " << array[mid]
+                << " is less than searchValue " << searchValue
+                << " so increase low index\n\n";
         }
         else {
+            // searchValue < midValue
+            // next search will end right before mid
             high = mid - 1;
+            cout << "array[mid] " << array[mid]
+                << " is greater than searchValue " << searchValue
+                << " so decrease high index\n\n";
         }
     }
+
+    cout << "low index = " << low << ", high index = " << high << '\n';
 
     return -1;  // not found
 }
@@ -52,7 +119,8 @@ int main() {
 
     int a[] = { 12, 22, 34, 47, 55, 67, 82, 98 };
 
-    cout << "Numbers in array: ";
+    cout << "\nBinary Search Demo Loop\n";
+    cout << "\Values in array:";
     for (int i : a) {
         cout << i << ' ';
     }
@@ -60,17 +128,20 @@ int main() {
 
     int userValue;
 
-    cout << "\nEnter an integer: " << endl;
-    cin >> userValue;
+    while (true) {
 
-    int result = binarySearch(a, 8, userValue);
+        cout << "\nEnter an integer: ";
+        cin >> userValue;
 
-    if (result >= 0) {
-        cout << "The number " << a[result] << " was found at the"
-            " element with index " << result << endl;
-    }
-    else {
-        cout << "The number " << userValue << " was not found. " << endl;
+        int result = binarySearch(a, 8, userValue);
+
+        if (result >= 0) {
+            cout << "The value " << a[result]
+                << " was found at index " << result << '\n';
+        }
+        else {
+            cout << "The value " << userValue << " was not found. " << '\n';
+        }
     }
 
     return 0;
