@@ -124,10 +124,10 @@ int binarySearch(T array[], int size, T searchValue) {
 //------------------------------------------------------------------------------
 int main() {
 
-    int a[] = { 12, 22, 34, 47, 55, 67, 82, 98 };
+    //int a[] = { 12, 22, 34, 47, 55, 67, 82, 98 };
     //double a[] = { 12.2, 22.2, 34.2, 47.2, 55.2, 67.2, 82.2, 98.2 };
-    //Circle a[] = { Circle(12), Circle(22), Circle(34), Circle(47),
-    //               Circle(55), Circle(67), Circle(82), Circle(98) };
+    Circle a[] = { Circle(12), Circle(22), Circle(34), Circle(47),
+                   Circle(55), Circle(67), Circle(82), Circle(98) };
     cout << "\nBinary Search Demo Loop\n";
 
     int userValue;
@@ -135,15 +135,15 @@ int main() {
     while (true) {
 
         cout << "\nValues in array: ";
-        for (int i : a) {
-            cout << i << ' ';
+        for (auto element : a) {
+            cout << element << ' ';
         }
 
-        cout << "\n\nEnter an integer: ";
+        cout << "\n\nEnter a value: ";
         cin >> userValue;
 
         int elements = sizeof(a) / sizeof(int);
-        int result = binarySearch(a, elements, userValue);
+        int result = binarySearch<Circle>(a, elements, userValue);
 
         if (result >= 0) {
             cout << "The value " << a[result]
