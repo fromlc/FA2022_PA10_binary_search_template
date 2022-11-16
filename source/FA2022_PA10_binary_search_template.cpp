@@ -22,6 +22,13 @@ using std::cin;
 using std::cout;
 
 //------------------------------------------------------------------------------
+// Linear search in array[] of type T
+//      - size parameter is the number of T elements in passed array[]
+//      - searchValue parameter is the value to find in array[]
+//      - array[] is unsorted
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
 // Iterative binary search in array[] of type T
 //      - size parameter is the number of T elements in passed array[]
 //      - searchValue parameter is the value to find in array[]
