@@ -120,20 +120,21 @@ int main() {
     int a[] = { 12, 22, 34, 47, 55, 67, 82, 98 };
 
     cout << "\nBinary Search Demo Loop\n";
-    cout << "\Values in array:";
-    for (int i : a) {
-        cout << i << ' ';
-    }
-    cout << '\n';
 
     int userValue;
 
     while (true) {
 
-        cout << "\nEnter an integer: ";
+        cout << "\Values in array:";
+        for (int i : a) {
+            cout << i << ' ';
+        }
+
+        cout << "\n\nEnter an integer: ";
         cin >> userValue;
 
-        int result = binarySearch(a, 8, userValue);
+        int elements = sizeof(a) / sizeof(int);
+        int result = binarySearch(a, sizeof(a) / sizeof(int), userValue);
 
         if (result >= 0) {
             cout << "The value " << a[result]
