@@ -44,6 +44,7 @@ using std::cout;
 // * Example: int array[] = { 0, 1, 2, 3, 4 }, searchValue = 1
 // 
 //      1) set low index to 0, high index to 4
+//              mid index is (0 + 4) / 2 = 2
 //      2) compare searchValue 1 with midpoint value 2 at array[2]
 //      3) 1 < 2 so next time only search elements before the 2
 //              same low index is 0
@@ -60,6 +61,7 @@ using std::cout;
 // * Another Example: int array[] = { 0, 1, 2, 3, 4 }, searchValue = 3
 // 
 //      1) set low index to 0, high index to 4
+//              mid index is (0 + 4) / 2 = 2
 //      2) compare searchValue 3 with midpoint value 2 at array[2]
 //      3) 3 is not < 2 so next time only search elements after the 2
 //              new low index is 3
