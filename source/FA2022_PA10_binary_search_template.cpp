@@ -68,7 +68,8 @@ using std::cout;
 //      4) compare searchValue 3 with new midpoint value 3 at array[3]
 //      5) 3 == 3 so searchValue is found at index mid = 3
 //------------------------------------------------------------------------------
-int binarySearch(int array[], int size, int searchValue) {
+template <typename T>
+int binarySearch(T array[], int size, T searchValue) {
 
     cout << "searchValue = " << searchValue << "\n\n";
 
@@ -133,7 +134,7 @@ int main() {
 
     while (true) {
 
-        cout << "\Values in array:";
+        cout << "\nValues in array: ";
         for (int i : a) {
             cout << i << ' ';
         }
