@@ -17,7 +17,7 @@ public:
 	// constructor
 	Circle(int r) : radius(r) {}
 	// getters
-	int getRadius() const;
+	int getRadius() const { return radius; }
 
 	// overload operator ==
 	//--------------------------------------------------------------------------
