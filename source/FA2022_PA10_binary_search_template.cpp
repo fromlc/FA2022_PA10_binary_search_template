@@ -13,11 +13,17 @@
 
 #include <iostream>
 
-using namespace std;
+#include "Circle.h"
 
 //------------------------------------------------------------------------------
-// Iterative binary search in int array[]
-//      - size parameter is the number of ints in passed array[]
+// using symbols
+//------------------------------------------------------------------------------
+using std::cin;
+using std::cout;
+
+//------------------------------------------------------------------------------
+// Iterative binary search in array[] of type T
+//      - size parameter is the number of T elements in passed array[]
 //      - searchValue parameter is the value to find in array[]
 //      - array[] must be sorted in ascending order!
 // 
@@ -118,7 +124,9 @@ int binarySearch(int array[], int size, int searchValue) {
 int main() {
 
     int a[] = { 12, 22, 34, 47, 55, 67, 82, 98 };
-
+    //double a[] = { 12.2, 22.2, 34.2, 47.2, 55.2, 67.2, 82.2, 98.2 };
+    //Circle a[] = { Circle(12), Circle(22), Circle(34), Circle(47),
+    //               Circle(55), Circle(67), Circle(82), Circle(98) };
     cout << "\nBinary Search Demo Loop\n";
 
     int userValue;
@@ -134,7 +142,7 @@ int main() {
         cin >> userValue;
 
         int elements = sizeof(a) / sizeof(int);
-        int result = binarySearch(a, sizeof(a) / sizeof(int), userValue);
+        int result = binarySearch(a, elements, userValue);
 
         if (result >= 0) {
             cout << "The value " << a[result]
