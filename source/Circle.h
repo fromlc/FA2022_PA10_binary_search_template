@@ -7,11 +7,14 @@
 #include <ostream>
 using std::ostream;
 
+//------------------------------------------------------------------------------
+// Circle
+//------------------------------------------------------------------------------
 class Circle {
 private:
 	int radius;
 
-	friend ostream& operator<<(ostream& os, Circle& c);
+	friend ostream& operator<<(ostream& os, const Circle& c);
 
 public:
 	// constructor
@@ -21,20 +24,20 @@ public:
 
 	// overload operator ==
 	//--------------------------------------------------------------------------
-	bool operator==(Circle& c2) {
+	bool operator==(const Circle& c2) {
 		return this->radius == c2.radius;
 	}
 
 	// overload operator >
 	//--------------------------------------------------------------------------
-	bool operator>(Circle& c2) {
+	bool operator>(const Circle& c2) {
 		return this->radius > c2.radius;
 	}
 };
 
 // overload operator <<
 //------------------------------------------------------------------------------
-ostream& operator<<(ostream& os, Circle& c) {
+static ostream& operator<<(ostream& os, const Circle& c) {
 	os << "Radius " << c.radius << ' ';
 	return os;
 }

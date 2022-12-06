@@ -26,8 +26,8 @@ using std::cout;
 //      - size parameter is number of T elements in passed array[]
 //      - searchValue parameter is value to find in array[]
 // Requirements:
-//      = type T must overload the ==, >, and << operators
 //      = array[] must be sorted in ascending order
+//      = type T must overload the ==, >, and << operators
 // 
 // Loops to compare searchValue with successive array midpoints.
 // 
