@@ -22,17 +22,12 @@ using std::cin;
 using std::cout;
 
 //------------------------------------------------------------------------------
-// Linear search in array[] of type T
-//      - size parameter is the number of T elements in passed array[]
-//      - searchValue parameter is the value to find in array[]
-//      - array[] is unsorted
-//------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------
-// Iterative binary search in array[] of type T
-//      - size parameter is the number of T elements in passed array[]
-//      - searchValue parameter is the value to find in array[]
-//      - array[] must be sorted in ascending order!
+// Iterative binary search in sorted array[] of type T
+//      - size parameter is number of T elements in passed array[]
+//      - searchValue parameter is value to find in array[]
+// Requirements:
+//      = type T must overload the ==, >, and << operators
+//      = array[] must be sorted in ascending order
 // 
 // Loops to compare searchValue with successive array midpoints.
 // 
@@ -101,7 +96,6 @@ int binarySearch(T array[], int size, T searchValue) {
 
         cout << "array[mid] = " << array[mid] << '\n';
 
-        // #TODO operator overload functions: ==, > 
         if (searchValue == array[mid]) {
             return mid;     // found! at index mid
         }
